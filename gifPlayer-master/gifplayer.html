@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Simple jQuery Gif Player</title>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	</head>
+	<body>
+		<script>
+			var imageSwap = function () {
+				var $this = $(this);
+				var newSource = $this.data('swap');
+				$this.data('swap', $this.attr('src'));
+				$this.attr('src', newSource);
+			}
+
+			$(function () {
+				$('img.playgif').hover(imageSwap, imageSwap);
+				$('a.gifimage').prepend('<div style="position:absolute; top:0px;"><img id="gifLogo" src="gif.png" /></div>');
+			});
+		</script>
+
+		<a class="gifimage" href="http://google.com" target="_blank">
+			<img class="playgif" data-swap="animated.gif" src="static.gif" />
+		</a>
+	</body>
+</html>
